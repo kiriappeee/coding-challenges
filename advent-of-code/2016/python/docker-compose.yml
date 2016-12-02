@@ -1,0 +1,5 @@
+aoc:
+  image: python:3.5
+  volumes:
+    - ./:/src
+  working_dir: /src
