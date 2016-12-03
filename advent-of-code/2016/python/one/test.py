@@ -1,5 +1,5 @@
 import unittest
-from . import ex1
+from . import ex1, ex2
 
 #format of test is <year><test number><sub test number>
 class Test20160101(unittest.TestCase):
@@ -51,11 +51,59 @@ class Test20160101(unittest.TestCase):
         ex1.move("R2")
         self.assertEqual(ex1.get_distance_from_start(), 2)
         ex1.reset_position()
+        ex1.move("R2")
+        ex1.move("R2")
+        self.assertEqual(ex1.get_distance_from_start(), 4)
+        ex1.reset_position()
         ex1.move("R5")
         ex1.move("L5")
         ex1.move("R5")
         ex1.move("R3")
         self.assertEqual(ex1.get_distance_from_start(), 12)
 
+class Test20160102(unittest.TestCase):
+    def setUp(self):
+        ex1.reset_position()
+        ex2.reset_position()
+
+    def test_repeated_location_is_retrieved(self):
+        move_list = ["R8", " R4", " R4", " R8\n" ]
+        self.assertEqual(ex2.find_hq(move_list), (4,0))
+
+    def test_locations_between_two_points_are_added(self):
+        current_move = (0,1)
+        self.assertEqual(ex2.get_positions_visited(current_move), [(0,1)])
+        current_move = (0, 4)
+        self.assertEqual(ex2.get_positions_visited(current_move), [(0,1),
+            (0,2),
+            (0,3),
+            (0,4)])
+        current_move = (0, -4)
+        self.assertEqual(ex2.get_positions_visited(current_move), [(0,-1),
+            (0,-2),
+            (0,-3),
+            (0,-4)])
+        current_move = (1, -4)
+        ex2.LAST_MOVE=(1, 3)
+        self.assertEqual(ex2.get_positions_visited(current_move), [
+            (1,2),
+            (1,1),
+            (1,0),
+            (1,-1),
+            (1,-2),
+            (1,-3),
+            (1,-4)])
+        ex2.reset_position()
+        current_move = (2,0)
+        self.assertEqual(ex2.get_positions_visited(current_move), [
+            (1,0),
+            (2,0)])
+        current_move = (-4,0)
+        self.assertEqual(ex2.get_positions_visited(current_move), [
+            (-1,0),
+            (-2,0),
+            (-3,0),
+            (-4,0)])
+        
 if __name__ == "__main__":
     unittest.main()

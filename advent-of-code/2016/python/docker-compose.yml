@@ -1,5 +1,25 @@
-aoc:
-  image: python:3.5
-  volumes:
-    - ./:/src
-  working_dir: /src
+version: '2'
+services:
+  aoc:
+    image: python:3.5
+    volumes:
+      - ./:/src
+    working_dir: /src
+
+  taxione:
+    extends:
+      service: aoc
+    command: python -m one.ex1
+  taxionetest:
+    extends:
+      service: aoc
+    command: python -m one.test Test20160101
+  taxitwo:
+    extends:
+      service: aoc
+    command: python -m one.ex2
+  taxitwotest:
+    extends:
+      service: aoc
+    command: python -m one.test Test20160102
+    

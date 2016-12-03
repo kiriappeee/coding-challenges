@@ -1,3 +1,4 @@
+#http://adventofcode.com/2016/day/1
 CURRENT_POSITION = (0,0)
 CURRENT_DIRECTION = "NORTH"
 def get_current_position():
@@ -44,7 +45,7 @@ def move(instruction):
     return True
 
 def get_distance_from_start():
-    return abs(CURRENT_POSITION[0]+CURRENT_POSITION[1])
+    return abs(CURRENT_POSITION[0])+abs(CURRENT_POSITION[1])
 
 def reset_position():
     global CURRENT_POSITION
@@ -56,9 +57,11 @@ def do_test():
     f = open('one/ex1.input', 'r')
     info = f.read()
     steps = info.split(',')
-    print(steps)
     reset_position()
     for step in steps:
-        print(step.strip())
         move(step.strip())
+    print(get_current_position())
     print(get_distance_from_start())
+
+if __name__ == "__main__":
+    do_test()
