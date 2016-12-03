@@ -22,4 +22,20 @@ services:
     extends:
       service: aoc
     command: python -m one.test Test20160102
-    
+
+  bathroomsecurityone:
+    extends:
+      service: aoc
+    command: python -m two.ex1
+  bathroomsecurityonetest:
+    extends:
+      service: aoc
+    command: python -m two.test Test20160201
+  bathroomsecuritytwo:
+    extends:
+      service: aoc
+    command: python -m two.ex2
+  bathroomsecuritytwotest:
+    extends:
+      service: aoc
+    command: python -m two.test Test20160202
