@@ -39,3 +39,22 @@ services:
     extends:
       service: aoc
     command: python -m two.test Test20160202
+
+  #day 3
+  triangleone:
+    extends:
+      service: aoc
+    command: python -m three.ex1
+  triangleonetest:
+    extends:
+      service: aoc
+    command: python -m three.test Test20160301
+  triangletwo:
+    extends:
+      service: aoc
+    command: python -m three.ex2
+  triangletwotest:
+    extends:
+      service: aoc
+    command: python -m three.test Test20160302
+
