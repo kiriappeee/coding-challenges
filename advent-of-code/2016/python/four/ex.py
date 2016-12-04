@@ -37,6 +37,15 @@ def ltfunc(a,b):
     else:
       return 1
 
+def decrypt_name(encrypted_string, sector_id):
+    s = ""
+    for c in encrypted_string:
+        if c == "-":
+            s += " "
+        else:
+            s += chr(((ord(c) - 97 + sector_id)%26)+97)
+    return s
+
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument('--part', type=int)
@@ -54,4 +63,9 @@ if __name__ == "__main__":
                 sum_of_sector_ids += encryption_parts[1]
         print(sum_of_sector_ids)
     elif args.part == 2:
-        pass
+        for code in codes:
+            encryption_parts = parse_encrypted_name(code)
+            if is_checksum_valid(encryption_parts[0], encryption_parts[2]):
+                decrypted_name = decrypt_name(encryption_parts[0], encryption_parts[1])
+                if "north" in decrypted_name.lower():
+                    print(decrypted_name, encryption_parts[1])

@@ -1,3 +1,4 @@
+#http://adventofcode.com/2016/day/4
 import unittest
 from four import ex
 
@@ -17,5 +18,8 @@ class Test20160401(unittest.TestCase):
         parsed_encryption = ex.parse_encrypted_name("totally-real-room-200[decoy]")
         self.assertFalse(ex.is_checksum_valid(parsed_encryption[0], parsed_encryption[2]))
 
+class Test20160402(unittest.TestCase):
+    def test_ciphers_are_decrypted(self):
+        self.assertEqual(ex.decrypt_name("qzmt-zixmtkozy-ivhz", 343), "very encrypted name")
 if __name__ == "__main__":
     unittest.main()
