@@ -58,3 +58,22 @@ services:
       service: aoc
     command: python -m three.test Test20160302
 
+  #day 4
+  securityone:
+    extends:
+      service: aoc
+    command: python -m four.ex --part=1
+  securityonetest:
+    extends:
+      service: aoc
+    command: python -m four.test Test20160401
+  securitytwo:
+    extends: 
+      service: aoc
+    command: python -m four.ex --part=2
+  securitytwotest:
+    extends:
+      service: aoc
+    command: python -m four.test Test20160402
+
+
