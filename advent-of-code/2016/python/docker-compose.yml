@@ -76,4 +76,20 @@ services:
       service: aoc
     command: python -m four.test Test20160402
 
-
+  #day 5
+  day5one:
+    extends:
+      service: aoc
+    command: python -m five.ex --part=1
+  day5onetest:
+    extends:
+      service: aoc
+    command: python -m five.test Test20160501
+  day5two:
+    extends: 
+      service: aoc
+    command: python -m five.ex --part=2
+  day5twotest:
+    extends:
+      service: aoc
+    command: python -m five.test Test20160502
