@@ -137,3 +137,26 @@ services:
     extends:
       service: aoc
     command: python -m seven.test
+
+  #day 8
+  day8one:
+    extends:
+      service: aoc
+    command: python -m eight.ex --part=1
+  day8onetest:
+    extends:
+      service: aoc
+    command: python -m eight.test Test20160801
+  day8two:
+    extends: 
+      service: aoc
+    command: python -m eight.ex --part=2
+  day8twotest:
+    extends:
+      service: aoc
+    command: python -m eight.test Test20160802
+  day8test:
+    extends:
+      service: aoc
+    command: python -m eight.test
+
